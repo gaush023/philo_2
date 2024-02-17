@@ -6,7 +6,7 @@
 #    By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 17:43:44 by sagemura          #+#    #+#              #
-#    Updated: 2024/02/17 17:49:50 by sagemura         ###   ########.fr        #
+#    Updated: 2024/02/17 19:44:58 by sagemura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ UTILSNAME = utils.a
 PHILOCOMPNAME = philo_components.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I$(UTILSDIR) -I$(PHILOCOMPDIR)
 
 SRC = ft_close.c ft_time.c print_behavior.c routine.c threads.c
 UTILSDIR = ./utils
@@ -28,7 +28,7 @@ all: $(NAME)
 $(NAME):$(OBJ)
 	$(MAKE) -C $(UTILSDIR)
 	$(MAKE) -C $(PHILOCOMPDIR)
-	ar rcs $(NAME) $(OBJ) $(UTILSDIR)/$(UTILSNAME) $(PHILOCOMPDIR)/$(PHILOCOMPNAME)
+	ar rcs $(NAME) $(OBJ) 
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
