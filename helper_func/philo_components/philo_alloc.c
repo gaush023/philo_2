@@ -6,7 +6,7 @@
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 02:11:44 by sagemura          #+#    #+#             */
-/*   Updated: 2024/02/17 10:46:47 by sagemura         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:36:07 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	philo_allocation(t_vars *vars)
 	vars->philo_vars = malloc(sizeof(t_philo_vars) * vars->philo_num);
 	if (!vars->philo_vars)
 		return (ft_close(NULL, malloc_error));
-	vars->forks = malloc(sizeof(t_philo_vars) * vars->philo_num);
+	vars->forks = malloc(sizeof(pthread_mutex_t) * vars->philo_num);
 	if (!vars->forks)
 		return (ft_close(vars, malloc_error2));
 	return (ini_mu(vars));

@@ -6,7 +6,7 @@
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 03:09:38 by sagemura          #+#    #+#             */
-/*   Updated: 2024/02/17 16:55:45 by sagemura         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:31:47 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@ static void	byebye_mutex(t_vars *vars, enum e_error i)
 }
 
 static void	delete_malloc(t_vars *vars, enum e_error i)
-{
-	if (i < malloc_error)
-		free(vars->philo_vars);
+{	
+	free(vars->philo_vars);
 	if (i < malloc_error2)
 		free(vars->forks);
 }
 
 static void	ft_no_leaks(t_vars *vars, enum e_error i)
-{
-	delete_malloc(vars, i);
+{	
+	
 	if (malloc_error < i && i >= malloc_error2)
 		byebye_mutex(vars, i);
+	if(malloc_error > i)
+		delete_malloc(vars, i);
 }
 
 int	ft_close(t_vars *vars, enum e_error i)
